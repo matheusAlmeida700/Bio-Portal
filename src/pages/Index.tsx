@@ -41,8 +41,8 @@ const Index = () => {
           <BackgroundScene />
           
           <main className="relative z-10">
-            {/* Initial screen with name */}
-            <header className="min-h-[50vh] flex flex-col items-center justify-center relative z-10 pt-16 mb-12">
+            {/* Initial screen with name - now taking full viewport height */}
+            <header className="h-screen flex flex-col items-center justify-center relative z-10">
               <h1 className="text-5xl md:text-7xl font-bold text-forest-gradient mb-4 text-center forest-glow">
                 Portal Etnias Indígenas
               </h1>
@@ -72,7 +72,9 @@ const Index = () => {
             </header>
             
             {/* Carousel with tribal groups */}
-            <TribalCarousel />
+            <section className="min-h-screen py-16">
+              <TribalCarousel />
+            </section>
           </main>
         </>
       )}
