@@ -1,52 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere } from '@react-three/drei';
-import * as THREE from 'three';
-
-// Componente de esferas que representam a natureza e as tribos
-const FloatingSpheres = () => {
-  const groupRef = useRef<THREE.Group>(null);
-
-  useEffect(() => {
-    if (groupRef.current) {
-      gsap.to(groupRef.current.rotation, {
-        y: Math.PI * 2,
-        duration: 20,
-        repeat: -1,
-        ease: "none"
-      });
-    }
-  }, []);
-
-  return (
-    <group ref={groupRef}>
-      {/* As cores representam as tribos indígenas */}
-      <Sphere args={[0.5, 32, 32]} position={[0, 0, 0]}>
-        <meshStandardMaterial color="#15803d" roughness={0.5} metalness={0.2} />
-      </Sphere>
-      <Sphere args={[0.2, 32, 32]} position={[1.2, 0.5, 0]}>
-        <meshStandardMaterial color="#FF6B6B" roughness={0.5} />
-      </Sphere>
-      <Sphere args={[0.15, 32, 32]} position={[-1, 0.8, 0.5]}>
-        <meshStandardMaterial color="#4ECDC4" roughness={0.5} />
-      </Sphere>
-      <Sphere args={[0.25, 32, 32]} position={[0.5, -1, -0.5]}>
-        <meshStandardMaterial color="#FFD166" roughness={0.5} />
-      </Sphere>
-      <Sphere args={[0.18, 32, 32]} position={[-0.7, -0.5, -0.8]}>
-        <meshStandardMaterial color="#06D6A0" roughness={0.5} />
-      </Sphere>
-      <Sphere args={[0.22, 32, 32]} position={[-0.3, 0.3, 1]}>
-        <meshStandardMaterial color="#118AB2" roughness={0.5} />
-      </Sphere>
-      <Sphere args={[0.17, 32, 32]} position={[0.8, 0.2, -1.2]}>
-        <meshStandardMaterial color="#9C6644" roughness={0.5} />
-      </Sphere>
-    </group>
-  );
-};
 
 interface LoadingScreenProps {
   progress: number;
@@ -75,7 +29,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress, onComplete }) =
       });
     }
 
-    // Quando o progresso estiver completo, anime a saída da tela de carregamento
+    // When progress is complete, animate the loading screen exit
     if (progress >= 100) {
       const tl = gsap.timeline({ onComplete });
       
@@ -110,14 +64,24 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress, onComplete }) =
       ref={containerRef}
       className="fixed inset-0 z-50 bg-dark-500 flex flex-col items-center justify-center overflow-hidden"
     >
-      <div className="w-64 h-64 mb-8">
-        <Canvas camera={{ position: [0, 0, 3] }}>
-          <ambientLight intensity={0.5} />
-          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-          <pointLight position={[-10, -10, -10]} />
-          <FloatingSpheres />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
+      <div className="w-64 h-64 mb-8 flex items-center justify-center">
+        <div className="relative w-40 h-40">
+          {[...Array(7)].map((_, i) => (
+            <div 
+              key={i}
+              className="absolute rounded-full animate-pulse" 
+              style={{
+                width: `${40 - i * 5}%`,
+                height: `${40 - i * 5}%`,
+                top: `${30 + i * 5}%`,
+                left: `${30 + i * 5}%`,
+                backgroundColor: getColor(i),
+                animationDelay: `${i * 0.15}s`,
+                animationDuration: `${1.5 + i * 0.2}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <h1 className="text-3xl md:text-4xl font-bold mb-2 text-forest-gradient">
@@ -137,6 +101,20 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress, onComplete }) =
       </div>
     </div>
   );
+};
+
+// Helper function to get colors for circles
+const getColor = (index: number): string => {
+  const colors = [
+    '#15803d', // green-700
+    '#FF6B6B', // red
+    '#4ECDC4', // teal
+    '#FFD166', // yellow
+    '#06D6A0', // green-light
+    '#118AB2', // blue
+    '#9C6644'  // brown
+  ];
+  return colors[index % colors.length];
 };
 
 export default LoadingScreen;
