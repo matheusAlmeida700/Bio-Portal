@@ -23,7 +23,7 @@ const TribalCard: React.FC<TribalCardProps> = ({ tribe, isActive, number }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    if (isActive && cardRef.current) {
+    if (isActive && cardRef.current && imageRef.current && contentRef.current) {
       // Animação quando o card fica ativo
       gsap.to(cardRef.current, {
         scale: 1,

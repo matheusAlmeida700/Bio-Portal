@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere } from '@react-three/drei';
+import * as THREE from 'three';
 
 // Componente de esferas que representam a natureza e as tribos
 const FloatingSpheres = () => {
@@ -104,7 +105,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress, onComplete }) =
       className="fixed inset-0 z-50 bg-dark-500 flex flex-col items-center justify-center overflow-hidden"
     >
       <div className="w-64 h-64 mb-8">
-        <Canvas camera={{ position: [0, 0, 3] }} shadows>
+        <Canvas camera={{ position: [0, 0, 3] }}>
           <ambientLight intensity={0.5} />
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
           <pointLight position={[-10, -10, -10]} />

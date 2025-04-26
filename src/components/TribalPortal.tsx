@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TribalCard from './TribalCard';
 
-// Importar GSAP plugins
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 // Dados das tribos
@@ -60,12 +60,14 @@ const TribalPortal: React.FC = () => {
   
   useEffect(() => {
     // Animação inicial do título
-    gsap.from(headingRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1.5,
-      ease: "power3.out"
-    });
+    if (headingRef.current) {
+      gsap.from(headingRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out"
+      });
+    }
     
     // Configura o ScrollTrigger para cada seção
     if (containerRef.current) {

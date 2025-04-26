@@ -1,7 +1,8 @@
+
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { Canvas, useFrame, extend, useThree } from '@react-three/fiber';
-import { useGLTF, OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import { gsap } from 'gsap';
 
 // Partículas flutuantes que representam a natureza e a floresta
@@ -11,7 +12,6 @@ const Particles = ({ count = 800 }) => {
   
   useEffect(() => {
     if (mesh.current) {
-      let i = 0;
       const matrix = new THREE.Matrix4();
       const dummy = new THREE.Object3D();
       const positions = [];
