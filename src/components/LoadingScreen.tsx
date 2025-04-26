@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere } from '@react-three/drei';
 
