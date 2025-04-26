@@ -109,7 +109,7 @@ const TribalPortal: React.FC = () => {
   
   return (
     <div className="min-h-screen">
-      <header className="min-h-[50vh] flex flex-col items-center justify-center relative z-10 pt-16">
+      <header className="min-h-screen flex flex-col items-center justify-center relative z-10">
         <h1 
           ref={headingRef}
           className="text-5xl md:text-7xl font-bold text-forest-gradient mb-4 text-center forest-glow"
@@ -181,3 +181,4 @@ const TribalPortal: React.FC = () => {
 };
 
 export default TribalPortal;
+
