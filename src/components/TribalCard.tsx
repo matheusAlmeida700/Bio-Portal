@@ -60,6 +60,44 @@ const TribalCard: React.FC<TribalCardProps> = ({ tribe, isActive, number }) => {
     }
   }, [isActive]);
   
+  // Function to map tribe.color to actual Tailwind classes
+  const getColorClass = (colorName: string, type: string) => {
+    const colorMap: Record<string, Record<string, string>> = {
+      'tribe-guarani': {
+        'bg': 'bg-green-500',
+        'text': 'text-green-500',
+        'hover': 'hover:bg-green-600'
+      },
+      'tribe-pataxos': {
+        'bg': 'bg-blue-500',
+        'text': 'text-blue-500',
+        'hover': 'hover:bg-blue-600'
+      },
+      'tribe-yanomamis': {
+        'bg': 'bg-red-500',
+        'text': 'text-red-500',
+        'hover': 'hover:bg-red-600'
+      },
+      'tribe-baniwa': {
+        'bg': 'bg-yellow-500',
+        'text': 'text-yellow-500',
+        'hover': 'hover:bg-yellow-600'
+      },
+      'tribe-xavantes': {
+        'bg': 'bg-purple-500',
+        'text': 'text-purple-500',
+        'hover': 'hover:bg-purple-600'
+      },
+      'tribe-krenak': {
+        'bg': 'bg-orange-500',
+        'text': 'text-orange-500',
+        'hover': 'hover:bg-orange-600'
+      }
+    };
+    
+    return colorMap[colorName]?.[type] || `${type}-green-500`;
+  };
+  
   return (
     <div 
       ref={cardRef}
@@ -76,10 +114,10 @@ const TribalCard: React.FC<TribalCardProps> = ({ tribe, isActive, number }) => {
             backgroundPosition: 'center'
           }}
         >
-          <div className={`absolute inset-0 bg-${tribe.color}/30 mix-blend-overlay`}></div>
+          <div className={`absolute inset-0 ${getColorClass(tribe.color, 'bg')}/30 mix-blend-overlay`}></div>
           <div className="absolute top-4 left-4">
             <div className="w-12 h-12 rounded-full bg-dark-400/80 flex items-center justify-center backdrop-blur-sm">
-              <span className={`text-${tribe.color} font-bold`}>{number}</span>
+              <span className={getColorClass(tribe.color, 'text')}>{number}</span>
             </div>
           </div>
         </div>
@@ -88,7 +126,7 @@ const TribalCard: React.FC<TribalCardProps> = ({ tribe, isActive, number }) => {
           ref={contentRef}
           className="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-center opacity-0 transform translate-x-[50px]"
         >
-          <h2 className={`text-4xl lg:text-5xl font-bold mb-4 text-${tribe.color}`}>
+          <h2 className={`text-4xl lg:text-5xl font-bold mb-4 ${getColorClass(tribe.color, 'text')}`}>
             {tribe.name}
           </h2>
           
@@ -98,7 +136,7 @@ const TribalCard: React.FC<TribalCardProps> = ({ tribe, isActive, number }) => {
           
           <div className="mt-auto">
             <Button 
-              className={`bg-${tribe.color} hover:bg-${tribe.color}/80 text-white px-8 py-6 text-lg rounded-md transition-all duration-300 transform hover:scale-105`}
+              className={`${getColorClass(tribe.color, 'bg')} ${getColorClass(tribe.color, 'hover')} text-white px-8 py-6 text-lg rounded-md transition-all duration-300 transform hover:scale-105`}
             >
               Explorar Site
             </Button>
