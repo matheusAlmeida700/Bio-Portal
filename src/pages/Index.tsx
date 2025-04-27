@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import LoadingScreen from '@/components/LoadingScreen';
-import BackgroundScene from '@/components/BackgroundScene';
-import TribalPortal from '@/components/TribalPortal';
+import { useState, useEffect } from "react";
+import LoadingScreen from "@/components/LoadingScreen";
+import BackgroundScene from "@/components/BackgroundScene";
+import TribalPortal from "@/components/TribalPortal";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -20,7 +20,7 @@ const Index = () => {
 
     return () => clearInterval(interval);
   }, []);
-  
+
   const handleLoadingComplete = () => {
     setTimeout(() => {
       setLoading(false);
@@ -28,12 +28,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-screen absolute">
       {loading ? (
-        <LoadingScreen 
-          progress={progress} 
-          onComplete={handleLoadingComplete} 
-        />
+        <LoadingScreen progress={progress} onComplete={handleLoadingComplete} />
       ) : (
         <>
           <BackgroundScene />
