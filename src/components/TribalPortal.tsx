@@ -11,22 +11,23 @@ const tribalGroups = [
     name: "Guarani",
     description:
       "Povo originário que habita a região sul e sudeste do Brasil, além de Paraguai, Argentina e Bolívia.",
-    group: "",
+    group: "Lucas, Igor, João Alexandre, João Vittor, Gustavo Barrinha",
     color: "tribe-guarani",
     image:
       "https://midianinja.org/wp-content/uploads/2018/05/36805711591_6ddf00c223_k.jpg",
-    url: "https://site-guarani.com",
+    url: "https://povo-guarani-brasil.vercel.app/",
   },
   {
     id: "pataxos",
     name: "Pataxós",
     description:
       "Habitantes do extremo sul da Bahia e norte de Minas Gerais, conhecidos por sua luta pela terra.",
-    group: "",
+    group:
+      "Ana Caroline Mena Bezerra de Paula, Isabela Costa Jeronymo, Luany Urtado Santos, Nycolle Barbosa, Nathália Almeida Yoshioka",
     color: "tribe-pataxos",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/4/43/Two_Pataxo_indians_%28Bras%C3%ADlia%2C_04_April_2006%29.jpeg",
-    url: "https://site-pataxos.com",
+    url: "https://natzada.github.io/pataxos/",
   },
   {
     id: "yanomamis",
@@ -37,7 +38,7 @@ const tribalGroups = [
       "Isabela Etore, Isabella Carolina, Júlia Garcia, Queren Hapuque,s Victoria de Mattos",
     color: "tribe-yanomamis",
     image: "https://img.socioambiental.org/d/373345-1/103_0302.jpg",
-    url: "https://github.com/JuhGarcia/siteyanomami.git",
+    url: "https://juhgarcia.github.io/Site-yanomami-grupo-IIJQV/",
   },
   {
     id: "baniwa",
