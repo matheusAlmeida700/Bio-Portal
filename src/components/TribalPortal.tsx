@@ -50,7 +50,7 @@ const tribalGroups = [
     color: "tribe-baniwa",
     image:
       "https://www.gov.br/funai/pt-br/assuntos/noticias/2023/indigena-do-povo-baniwa-maria-do-rosario-assume-a-coordenacao-da-funai-no-rio-negro-am/whatsapp-image-2023-05-06-at-11-04-31.jpeg/@@images/208f11f5-adaf-4e58-8c0e-06fd321a3f0a.jpeg",
-    url: "https://stalwart-rugelach-82efc0.netlify.app/",
+    url: "https://baniwahekuli.netlify.app/",
   },
   {
     id: "xavantes",
